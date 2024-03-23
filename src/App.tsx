@@ -1,6 +1,6 @@
+import { MenuItems } from "./components/MenuItems";
 import { menuItems } from "./data/db";
 
-console.log(menuItems);
 function App() {
   return (
     <>
@@ -11,11 +11,18 @@ function App() {
       </header>
 
       <main className="max-w-6xl mx-auto py-20 grid sm:grid-cols-2">
-        <div className="text-center bg-red-500">
-          <h2>Menu</h2>
+        <div className="">
+          <h2 className="text-4xl font-black">Menu</h2>
+          {menuItems.map((item) => (
+            <MenuItems
+              key={item.id}
+              item={item}
+            />
+          ))}
         </div>
 
-        <div className="text-center bg-red-800">
+
+        <div className="">
           <h2>Consumo</h2>
         </div>
       </main>
