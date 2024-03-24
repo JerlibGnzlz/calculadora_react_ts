@@ -1,12 +1,15 @@
 import { useState } from "react"
-import { OrderItem } from '../types/index';
+import { OrderItem } from '../types';
 
 export const useOrder = () => {
 
-    const [order, setOrder: ] = useState<OrderItem[]>([])
+    const [order, setOrder] = useState<OrderItem[]>([])
 
+    const addItem = () => {
 
+        console.log("agregar")
+    }
     return {
-
+        addItem
     }
 }
