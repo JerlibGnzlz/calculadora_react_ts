@@ -24,6 +24,7 @@ export const useOrder = () => {
         }
     }
     return {
-        addItem
+        addItem,
+        order
     }
 }
