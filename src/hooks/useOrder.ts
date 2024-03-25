@@ -10,21 +10,32 @@ export const useOrder = () => {
 
         const itemExist = order.find(orderItem => orderItem.id === item.id);
 
-        if (itemExist) {
+        if (itemExist)
+        {
 
             const updateOrder = order.map(orderItem => orderItem.id === item.id
                 ? { ...orderItem, quantity: orderItem.quantity + 1 }
                 : orderItem
             )
             setOrder(updateOrder)
-        } else {
+        } else
+        {
             const newItem = { ...item, quantity: 1 }
             setOrder([...order, newItem])
 
         }
+
     }
+
+    const removeItem = (id: MenuItem['id']) => {
+        setOrder(orderItem => orderItem.filter(item => item.id !== id));
+
+    }
+
+
     return {
         addItem,
-        order
+        order,
+        removeItem
     }
 }

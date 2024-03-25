@@ -1,11 +1,12 @@
 import { MenuItems } from "./components/MenuItems";
 import { OrderContents } from "./components/OrderContents";
+import { OrderTotal } from "./components/OrderTotal";
 import { menuItems } from "./data/db";
 import { useOrder } from "./hooks/useOrder";
 
 function App() {
 
-  const { order, addItem } = useOrder()
+  const { order, addItem, removeItem } = useOrder()
 
 
   return (
@@ -33,7 +34,10 @@ function App() {
         <div className="border border-dashed border-slate-300 ml-5 rounded-lg space-y-10">
           <OrderContents
             order={order}
+            removeItem={removeItem}
           />
+
+          <OrderTotal />
         </div>
       </main>
     </>

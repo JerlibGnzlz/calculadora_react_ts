@@ -1,19 +1,20 @@
-import { OrderItem } from "../types"
+import { MenuItem, OrderItem } from "../types"
 
 type OrderContentsProps = {
 
   order: OrderItem[]
+  removeItem: (id: MenuItem["id"]) => void
 }
 
 
-export const OrderContents = ({ order }: OrderContentsProps) => {
+export const OrderContents = ({ order, removeItem }: OrderContentsProps) => {
   return (
     <div>
       <h2 className="font-black text-4xl mx-3">Consumo</h2>
 
       <div className="space-y-3 mt-10 mx-3">
         {order.length === 0 ?
-          <p className="text-center">La orden esta vacia</p>
+          <p className="text-center"></p>
           : (
             order.map(item => (
               <div className="flex justify-between border-t last-of-type:border-b border-teal-300  rounded-lg py-5 mx-auto items-center"
@@ -27,8 +28,11 @@ export const OrderContents = ({ order }: OrderContentsProps) => {
                     Cantidad: {item.quantity} - $ {item.price * item.quantity}
                   </p>
                 </div>
-                <button className="bg-red-600 rounded-full w-8 h-8 text-white font-black">
+                <button className="bg-red-600 rounded-full w-8 h-8 text-white font-black"
+                  onClick={() => removeItem(item.id)}
+                >
                   x
+
                 </button>
               </div>
             ))
@@ -38,7 +42,7 @@ export const OrderContents = ({ order }: OrderContentsProps) => {
         }
 
       </div>
-    </div>
+    </div >
   )
 }
 
