@@ -19,17 +19,18 @@ function App() {
       <main className="max-w-6xl mx-auto py-20 grid sm:grid-cols-2">
         <div className="">
           <h2 className="text-4xl font-black">Menu</h2>
-          {menuItems.map((item) => (
-            <MenuItems
-              key={item.id}
-              item={item}
-              addItem={addItem}
-            />
-          ))}
+          <div className="mt-10 space-y-3">
+            {menuItems.map((item) => (
+              <MenuItems
+                key={item.id}
+                item={item}
+                addItem={addItem}
+              />
+            ))}
+          </div>
         </div>
 
-
-        <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
+        <div className="border border-dashed border-slate-300 ml-5 rounded-lg space-y-10">
           <OrderContents
             order={order}
           />
