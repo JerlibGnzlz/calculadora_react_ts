@@ -15,7 +15,13 @@ const tipOptions = [
         label: '50%'
     },
 ]
-export const TipPorcentaje = () => {
+
+type TipPorcentajeProps = {
+    setTip: React.Dispatch<React.SetStateAction<number>>
+}
+
+
+export const TipPorcentaje = ({ setTip }: TipPorcentajeProps) => {
     return (
         <div>
             <h3 className="font-black text-2xl">Propina:</h3>
@@ -31,6 +37,7 @@ export const TipPorcentaje = () => {
                             type="radio"
                             name="tip"
                             value={tip.value}
+                            onChange={(e) => setTip(+e.target.value)}
                         />
                     </div>
                 ))}
