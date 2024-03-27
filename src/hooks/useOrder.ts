@@ -11,16 +11,14 @@ export const useOrder = () => {
 
         const itemExist = order.find(orderItem => orderItem.id === item.id);
 
-        if (itemExist)
-        {
+        if (itemExist) {
 
             const updateOrder = order.map(orderItem => orderItem.id === item.id
                 ? { ...orderItem, quantity: orderItem.quantity + 1 }
                 : orderItem
             )
             setOrder(updateOrder)
-        } else
-        {
+        } else {
             const newItem = { ...item, quantity: 1 }
             setOrder([...order, newItem])
 
@@ -33,12 +31,17 @@ export const useOrder = () => {
 
     }
 
+    const placeOrder = () => {
+        setOrder([])
+        setTip(0)
+    }
 
     return {
         addItem,
         order,
         removeItem,
         tip,
-        setTip
+        setTip,
+        placeOrder
     }
 }
